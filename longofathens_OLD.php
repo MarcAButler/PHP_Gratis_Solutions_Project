@@ -15,10 +15,10 @@
     $result = mysqli_query($conn, $sql);
 
 
-    // foreach ($result as $row)
-    // {
-    //     print_r($row);
-    // }
+    foreach ($result as $row)
+    {
+        print_r($row);
+    }
 
 
     // turn the records as an array
@@ -106,53 +106,45 @@
     </div>
     </nav>
 
-    <div class='d-flex flex-row flex-wrap justify-content-center'>
+
     <!-- RENDERS THE VEHICLE CARDS -->
     <?php
-
-    foreach ($result as $row)
-    {
-
-    $name = trim($row['name'], "'");
-    $manufacturer = trim($row['manufacturer'], "'");
-    $condition = trim($row['condition'], "'");
-    $retail_price = trim($row['retail_price'], "'");
-    $savings_up_to = trim($row['savings_up_to'], "'");
-    $sales_price = trim($row['sales_price'], "'");
-    $stock_number = trim($row['stock_number'], "'");
-    $mileage = trim($row['mileage'], "'");
-    // Get rid of the ' character
-    $image_path = '/images/'. trim($row['image_path'], "'");
-
-    echo    "<div class='card mb-3 w-25 m-1'>";
-    echo        "<img src='$image_path' alt='$image_path' width='100%' height='200'>";
-    echo        "<h6 class='card-subtitle text-muted mx-2'>$manufacturer</h6>";
-    echo        "<h4 class='card-header'>$name</h3>";
-    echo        "<span class='d-flex flex-row justify-content-around'><p>Condition:</p><p>$condition</p></span>";
-    echo        "<span class='d-flex flex-row justify-content-around'><p>Retail Price:</p><p>$retail_price</p></span>";
-    // Do not put savings_up_to field if it is null or empty
-    if (!$savings_up_to == null and !$savings_up_to == '')
-    {
-        echo        "<span class='d-flex flex-row justify-content-around'><p>Savings Up To:</p><p>$savings_up_to</p></span>";
-    }
-    echo        "<span class='d-flex flex-row justify-content-around'><p>Sales Price:</p><p>$sales_price</p></span>";
-    echo        "<span class='d-flex flex-row justify-content-around'><p>Stock #:</p><p>$stock_number</p></span>";
-    echo        "<span class='d-flex flex-row justify-content-around'><p>Mileage:</p><p>$mileage</p></span>";
-    
-    echo        "<button type='button' class='btn btn-outline-primary mx-2'>Calculate Payments ➡️</button>";
-    echo        "<span class='d-flex flex-row justify-content-around mx-2'>";
-    echo        "<button type='button' class='btn btn-outline-primary w-50'>Details ➡️</button>";
-    echo        "<button type='button' class='btn btn-outline-primary w-50'>Incentives ➡️</button>";
-    echo        "</span>";
-    echo        "<span class='d-flex flex-row justify-content-around mx-2'>";
-    echo        "<button type='button' class='btn btn-outline-primary w-50'>Concierge ➡️</button>";
-    echo        "<button type='button' class='btn btn-outline-primary w-50'>Compare ➡️</button>";
-    echo        "</span>";
-    echo        "<button type='button' class='btn btn-outline-primary mx-2'>Get Pre-approved ➡️</button>";
-
+    echo "<div>";
+    echo    "<div class='card mb-3'>";
+    echo        "<svg xmlns='http://www.w3.org/2000/svg' class='d-block user-select-none' width='100%' height='200' aria-label='Placeholder: Image cap' focusable='false' role='img' preserveAspectRatio='xMidYMid slice' viewBox='0 0 318 180' style='font-size:1.125rem;text-anchor:middle'>";
+    echo            "<rect width='100%' height='100%' fill='#868e96'></rect>";
+    echo            "<text x='50%' y='50%' fill='#dee2e6' dy='.3em'>Image cap</text>";
+    echo        "</svg>";
+    echo        "<h3 class='card-header'>Card header</h3>";
+    echo        "<div class='card-body'>";
+    echo            "<h5 class='card-title'>Special title treatment</h5>";
+    echo            "<h6 class='card-subtitle text-muted'>Support card subtitle</h6>";
+    echo        "</div>";
+    echo        "<div class='card-body'>";
+    echo            "<p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>";
+    echo        "</div>";
+    echo        "<ul class='list-group list-group-flush'>";
+    echo            "<li class='list-group-item'>Cras justo odio</li>";
+    echo            "<li class='list-group-item'>Dapibus ac facilisis in</li>";
+    echo            "<li class='list-group-item'>Vestibulum at eros</li>";
+    echo        "</ul>";
+    echo        "<div class='card-body'>";
+    echo            "<a href='#' class='card-link'>Card link</a>";
+    echo            "<a href='#' class='card-link'>Another link</a>";
+    echo        "</div>";
+    echo        "</div>";
+    echo        "<div class='card'>";
+    echo        "<div class='card-body'>";
+    echo            "<h4 class='card-title'>Card title</h4>";
+    echo            "<h6 class='card-subtitle mb-2 text-muted'>Card subtitle</h6>";
+    echo            "<p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>";
+    echo            "<a href='#' class='card-link'>Card link</a>";
+    echo            "<a href='#' class='card-link'>Another link</a>";
+    echo        "</div>";
     echo    "</div>";
-    }
+
+    echo "</div>";
     ?>
-    </div>
+
 </body>
 </html>
