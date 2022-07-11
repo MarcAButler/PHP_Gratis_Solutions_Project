@@ -126,6 +126,7 @@
 
     echo    "<div class='card mb-3 w-25 m-1'>";
     echo        "<img src='$image_path' alt='$image_path' width='100%' height='200'>";
+    echo        "<div class='text-white bg-success justify-content-end w-25 m-2'>$sales_price</div>";
     echo        "<h6 class='card-subtitle text-muted mx-2'>$manufacturer</h6>";
     echo        "<h4 class='card-header'>$name</h3>";
     echo        "<span class='d-flex flex-row justify-content-around'><p>Condition:</p><p>$condition</p></span>";
