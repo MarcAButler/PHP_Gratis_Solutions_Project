@@ -15,17 +15,12 @@
     $result = mysqli_query($conn, $sql);
 
 
-    // foreach ($result as $row)
-    // {
-    //     print_r($row);
-    // }
 
+    // Routing
+    // route('/home', function() {
+    //     echo "hello";
+    // })
 
-    // turn the records as an array
-    //$vehicles = mysqli_fetch_all($result);
-
-    //print_r($vehicles);
-    //print_r($vehicles);
 ?>
 
 <!DOCTYPE html>
@@ -112,7 +107,7 @@
 
     foreach ($result as $row)
     {
-
+    $id = $row['id'];
     $name = trim($row['name'], "'");
     $manufacturer = trim($row['manufacturer'], "'");
     $condition = trim($row['condition'], "'");
@@ -125,7 +120,22 @@
     $image_path = '/images/'. trim($row['image_path'], "'");
 
     echo    "<div class='card mb-3 w-25 m-1'>";
-    echo        "<img src='$image_path' alt='$image_path' width='100%' height='200'>";
+    echo    "<form action='/vehicle.php' method='GET'>";
+
+    // FIELDS
+    echo        "<input type='hidden' name='id' value='$id'>";
+    echo        "<input type='hidden' name='name' value='$name'>";
+    echo        "<input type='hidden' name='manufacturer' value='$manufacturer'>";
+    echo        "<input type='hidden' name='condition' value='$condition'>";
+    echo        "<input type='hidden' name='retail_price' value='$retail_price'>";
+    echo        "<input type='hidden' name='savings_up_to' value='$savings_up_to'>";
+    echo        "<input type='hidden' name='sales_price' value='$sales_price'>";
+    echo        "<input type='hidden' name='stock_number' value='$stock_number'>";
+    echo        "<input type='hidden' name='mileage' value='$mileage'>";
+    echo        "<input type='hidden' name='image_path' value='$image_path'>";
+
+    // UI
+    echo        "<button type='submit'><img src='$image_path' alt='$image_path' width='100%' height='200'></button>";
     echo        "<div class='text-white bg-success justify-content-end w-25 m-2'>$sales_price</div>";
     echo        "<h6 class='card-subtitle text-muted mx-2'>$manufacturer</h6>";
     echo        "<h4 class='card-header'>$name</h3>";
@@ -151,6 +161,7 @@
     echo        "</span>";
     echo        "<button type='button' class='btn btn-outline-primary mx-2'>Get Pre-approved ➡️</button>";
 
+    echo    "</form>";
     echo    "</div>";
     }
     ?>
