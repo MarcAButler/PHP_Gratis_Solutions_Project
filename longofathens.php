@@ -1,4 +1,5 @@
 <?php
+    session_start();
     // connect to database
     $conn = mysqli_connect('localhost', 'root', '', 'sql_auto_wall', 3307);
 
@@ -8,25 +9,54 @@
         die('Connection error: ' . mysqli_connect_error());
     }
 
-   
-
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $email = $_POST['email'];
-    $contact_number = $_POST['contact_number'];
-    $pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-    // Insert into the user table (used for regsistration)
-    $insertUser = "INSERT INTO users(fname, lname, email, contact_number, password_hash)
-                   VALUES ('$fname', '$lname', '$email', '$contact_number', '$pass_hash')";
-
-    // insert the user
-    if (mysqli_query($conn, $insertUser)) {
-    // echo "New record created successfully";
-    } 
-    else {
-    //   echo "Error: " . $insertUser . "<br>" . mysqli_error($conn);
+    if(!empty($_POST['fname']))
+    {
+        $fname = $_POST['fname'];
+        $lname = $_POST['lname'];
+        $email = $_POST['email'];
+        $contact_number = $_POST['contact_number'];
+        $pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        
+        // Insert into the user table (used for regsistration)
+        $insertUser = "INSERT INTO users(fname, lname, email, contact_number, password_hash)
+                       VALUES ('$fname', '$lname', '$email', '$contact_number', '$pass_hash')";
+    
+        // insert the user
+        if (mysqli_query($conn, $insertUser)) {
+        // echo "New record created successfully";
+        } 
+        else {
+        //   echo "Error: " . $insertUser . "<br>" . mysqli_error($conn);
+        }
     }
+    // Handle login otherwise redirect back to login in page on failed login attempt
+    else if (!empty($_POST['login_email']) and !empty($_POST['login_pass']))
+    {
+        $email = $_POST['login_email'];
+        // Get the corresponding email's password hash with a query
+        $pass_hash_query = "SELECT password_hash FROM users WHERE email = '$email'";
+
+        $pass_hash = mysqli_query($conn, $pass_hash_query);
+        $pass_hash = mysqli_fetch_array($pass_hash, MYSQLI_ASSOC);
+        $pass_hash = $pass_hash['password_hash'];
+        
+        // Check if the password hash of the provided email works with the provided password
+        $is_correct_password = password_verify($_POST['login_pass'], $pass_hash);
+        
+        if (!$is_correct_password)
+        {
+            $_SESSION['login_failed'] = true;
+
+            $login_page = '/';
+            // [!] Redirect back to the login page
+            header('Location: '. $login_page);
+            die();
+        }
+
+
+    }
+
+
 
     // select all query
     $sql = 'SELECT * FROM vehicles';
