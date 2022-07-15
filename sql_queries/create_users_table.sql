@@ -1,0 +1,1 @@
+CREATE TABLE users (id MEDIUMINT NOT NULL AUTO_INCREMENT, fname VARCHAR(64), lname VARCHAR(64), email VARCHAR(64), contact_number VARCHAR(16), password_hash VARCHAR(256), PRIMARY KEY (id))

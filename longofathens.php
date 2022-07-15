@@ -8,19 +8,31 @@
         die('Connection error: ' . mysqli_connect_error());
     }
 
+   
+
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $email = $_POST['email'];
+    $contact_number = $_POST['contact_number'];
+    $pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+    // Insert into the user table (used for regsistration)
+    $insertUser = "INSERT INTO users(fname, lname, email, contact_number, password_hash)
+                   VALUES ('$fname', '$lname', '$email', '$contact_number', '$pass_hash')";
+
+    // insert the user
+    if (mysqli_query($conn, $insertUser)) {
+    // echo "New record created successfully";
+    } 
+    else {
+    //   echo "Error: " . $insertUser . "<br>" . mysqli_error($conn);
+    }
+
     // select all query
     $sql = 'SELECT * FROM vehicles';
 
     // query for results
     $result = mysqli_query($conn, $sql);
-
-
-
-    // Routing
-    // route('/home', function() {
-    //     echo "hello";
-    // })
-
 ?>
 
 <!DOCTYPE html>
@@ -28,11 +40,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>gs-vehicle</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSS only -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/flatly/bootstrap.min.css" integrity="sha384-qF/QmIAj5ZaYFAeQcrQ6bfVMAh4zZlrGwTPY7T/M+iTTLJqJBJjwwnsE5Y0mV7QK" crossorigin="anonymous">
 </head>
 <body>
