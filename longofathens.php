@@ -160,7 +160,7 @@
     // Get rid of the ' character
     $image_path = '/images/'. trim($row['image_path'], "'");
 
-    echo    "<div class='card mb-3 w-25 m-1'>";
+    echo    "<div class='card mb-3 m-1' style='width: 22%'>";
     echo    "<form action='/vehicle.php' method='GET'>";
 
     // FIELDS
@@ -176,10 +176,10 @@
     echo        "<input type='hidden' name='image_path' value='$image_path'>";
 
     // UI
-    echo        "<button type='submit'><img src='$image_path' alt='$image_path' width='100%' height='200'></button>";
-    echo        "<div class='text-white bg-success justify-content-end w-25 m-2'>$sales_price</div>";
+    echo        "<button type='submit' style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;' class='justify-content-center'><img src='$image_path' alt='$image_path' width='100%' height='200'></button>";
+    echo        "<div class='text-white bg-success justify-content-end m-2' style='width=30%'>$sales_price</div>";
     echo        "<h6 class='card-subtitle text-muted mx-2'>$manufacturer</h6>";
-    echo        "<h4 class='card-header'>$name</h3>";
+    echo        "<button type='submit' style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;'><h4 class='card-header'>$name</h4></button>";
     echo        "<span class='d-flex flex-row justify-content-around'><p>Condition:</p><p>$condition</p></span>";
     echo        "<span class='d-flex flex-row justify-content-around'><p>Retail Price:</p><p>$retail_price</p></span>";
     // Do not put savings_up_to field if it is null or empty
