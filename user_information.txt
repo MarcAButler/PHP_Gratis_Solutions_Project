@@ -1,0 +1,14 @@
+User information for testing:
+-----------------------------
+email: johnDoe@gmail.com
+pass: abcd1234
+
+====
+
+email: janeDoe@gmail.com
+pass: 4321dcba
+
+====
+
+email: saphuraLoreene@gmail.com
+pass: veryHardUncrackablePassword
