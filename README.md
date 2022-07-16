@@ -10,6 +10,9 @@ email they will be redirected to the Inventory page, otherwise they will be see 
 ## Inventory Page
 This page uses a flex box to list all of the vehicles in the database. Each of these vehicles are displayed on a bootstrap-styled card.
 Additionally, these cards can redirect a user to a vehicle page with more specific information.
+<p align="center">
+  <img alt="GIF of a short demo of the Inventory Page" src="https://github.com/MarcAButler/PHP_Gratis_Solutions_Project/blob/master/demos/inventory_page.gif">
+</p>
 
 ## Vehicle Page(s)
 The vehicle pages dynamically display data from a MySQL database by utlizing the XAMPP stack. Each page is unique and displays
